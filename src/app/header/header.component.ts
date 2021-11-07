@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
 })
 
 export class HeaderComponent {
-    header = "Dynamic Header"
+
 }
