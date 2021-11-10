@@ -1,10 +1,10 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="container-md" style="height: 90%;">
+    <div class="row" style="height: 100%;">
         <div class="col-sm-9">
-            <app-item></app-item>
+            <app-item [itemList]="items" (clickItem)="onClickItem($event)"></app-item>
         </div>
-        <div class="col-sm-3">
-            <app-order></app-order>
+        <div class="col-sm-3 bg-secondary list-overflow mt-4 rounded">
+            <app-order [list_order]="order_items"></app-order>
         </div>
     </div>
 </div>

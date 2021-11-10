@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: 'app-order',
@@ -7,5 +7,5 @@ import { Component } from "@angular/core";
 })
 
 export class OrderComponent {
-
+    @Input() list_order: any;
 }
