@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { ItemService } from "../services/item.service";
+
 
 @Component({
     selector: 'app-item-list',
@@ -6,6 +8,16 @@ import { Component } from "@angular/core";
     styleUrls: ['./item-list.component.scss']
 })
 
-export class ItemListComponent {
-    
+export class ItemListComponent implements OnInit {
+    displayedColumns: string[] = ['id', 'name', 'category', 'price'];
+    items: any = [];  
+    @Input() itemList: any;
+
+    constructor(private itemService: ItemService) {
+      this.items = this.itemService.getAllItems();
+    }
+
+    ngOnInit(): void {
+
+    }
 }
