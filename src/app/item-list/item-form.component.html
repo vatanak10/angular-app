@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Add New Product</h1>
+
+<div mat-dialog-content class="form-element">
+    <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Product Name</mat-label>
+        <input matInput required [(ngModel)]="data.item.name">
+        <mat-icon matSuffix color="primary">shop</mat-icon>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-content class="form-element">
+    <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Category</mat-label>
+        <mat-select required [(ngModel)]="data.item.category">
+            <mat-option>-- None --</mat-option>
+            <mat-option value="option">Vehicle</mat-option>
+            <mat-option value="option">Property</mat-option>
+        </mat-select>                  
+    </mat-form-field>
+</div>
+
+<div mat-dialog-content class="form-element">
+    <mat-form-field appearance="fill" floatLabel="always" class="w-100">
+        <mat-label>Price</mat-label>
+        <input matInput required type="number" [(ngModel)]="data.item.price" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-content class="form-element">
+    <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Image Link Address</mat-label>
+        <input matInput required [(ngModel)]="data.item.img" placeholder="">
+        <mat-icon matSuffix color="primary">image</mat-icon>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-action>
+    <button mat-button class="btn btn-outline-success me-2" [mat-dialog-close]="data.item" cdkFocusInitial>Add Product</button>
+    <button mat-button class="btn btn-outline-secondary margin_right" (click)="onNoClick()">Cancel</button>
+</div>    

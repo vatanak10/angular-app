@@ -19,7 +19,6 @@ import { HeaderComponent } from './header/header.component';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemListComponent } from './item-list/item-list.component';
 
 const appRoutes: Routes = [
@@ -30,10 +29,6 @@ const appRoutes: Routes = [
   {
     path: 'item-list', 
     component: ItemListComponent
-  },
-  {
-    path: 'item-list/create', 
-    component: ItemFormComponent
   }
 ]
 
@@ -44,7 +39,6 @@ const appRoutes: Routes = [
     ItemComponent,
     OrderComponent,
     DashboardComponent,
-    ItemFormComponent,
     ItemListComponent
   ],
   imports: [
@@ -61,7 +55,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [
-    
+    ItemListComponent
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
