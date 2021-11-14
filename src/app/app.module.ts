@@ -3,9 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ItemService } from './services/item.service';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,7 +52,16 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    MatDialogModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
+  ],
+  entryComponents: [
+    
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
