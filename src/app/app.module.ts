@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

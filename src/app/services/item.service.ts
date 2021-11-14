@@ -1,7 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 
 @Injectable()
-
 export class ItemService {
     items: any[] = [
         {
@@ -37,7 +36,7 @@ export class ItemService {
     }
 
     addOrderItem(item: any) {
-        const value = this.list_order.find((i) => i.id !== item.id);
+        const value = this.list_order.find((i) => i.id == item.id);
         if(value) {
             let index = this.list_order.indexOf(value);
             this.list_order[index] = { ...item, qty: value.qty + 1 };

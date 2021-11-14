@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output} from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import { ItemService } from "../services/item.service";
 
 @Component({
     selector: 'app-item',
@@ -6,17 +7,19 @@ import { Component, EventEmitter, Input, Output} from "@angular/core";
     styleUrls: ['./item.component.scss']
 })
 
-export class ItemComponent {
+export class ItemComponent implements OnInit{
+    items: any = [];  
     @Input() itemList: any;
-    @Output() clickItem = new EventEmitter();
 
-    constructor() {
-      console.log(this.itemList);
+    constructor(private itemService: ItemService) {
+      this.items = this.itemService.getAllItems();
+    }
+  
+    ngOnInit(): void {
+
     }
 
     onClickItem(item: any): void {
-      console.log(item);
-      console.log('stnd on list item');
-      this.clickItem.emit(item);
+      this.itemService.addOrderItem(item);
     }
 }
