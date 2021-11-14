@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ItemService } from "../services/item.service";
 
 @Component({
@@ -10,7 +11,7 @@ import { ItemService } from "../services/item.service";
 export class DashboardComponent implements OnInit{
     list_order: any[] = [];
   
-    constructor(private itemService: ItemService) {
+    constructor(private itemService: ItemService, private router: Router) {
         this.list_order = this.itemService.getOrderItem();
     }
 
