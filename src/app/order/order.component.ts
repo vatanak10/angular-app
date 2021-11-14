@@ -30,7 +30,6 @@ export class OrderComponent implements OnInit{
     }
 
     OnDelete(list_order: any): void {
-        this.itemService.deleteOrderItem(list_order);
-        this.itemService.refreshListOrder.emit();
+        this.itemService.deleteOrderItem(list_order);        
     }
 }

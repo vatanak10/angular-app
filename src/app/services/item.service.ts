@@ -63,5 +63,6 @@ export class ItemService {
 
     deleteOrderItem(item: any) {
         this.list_order = this.list_order.filter((i) => i.id !== item.id);
+        this.refreshListOrder.emit();
     }
 }
