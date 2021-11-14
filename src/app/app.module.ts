@@ -9,6 +9,8 @@ import { ItemComponent } from './item/item.component';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemService } from './services/item.service';
+import { AddItemComponent } from './add-item/add-item.component';
+import { ItemListComponent } from './item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ItemService } from './services/item.service';
     HeaderComponent,
     ItemComponent,
     OrderComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddItemComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
