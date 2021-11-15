@@ -1,0 +1,44 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form-element">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Product Name</mat-label>
+                <input matInput required>
+                <mat-icon matSuffix color="primary">shop</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="form-element">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Category</mat-label>
+                <mat-select required>
+                    <mat-option>-- None --</mat-option>
+                    <mat-option value="option">Vehicle</mat-option>
+                    <mat-option value="option">Property</mat-option>
+                </mat-select>                  
+            </mat-form-field>
+        </div>
+
+        <div class="form-element">
+            <mat-form-field appearance="fill" floatLabel="always" class="w-100">
+                <mat-label>Price</mat-label>
+                <input matInput required type="number" class="example-right-align" placeholder="0">
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+            </mat-form-field>
+        </div>
+
+        <div class="form-element">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Image Link Address</mat-label>
+                <input matInput required placeholder="">
+                <mat-icon matSuffix color="primary">image</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="form-element">
+            <button type="submit" class="btn btn-outline-success me-2">Add Product</button>
+            <button type="button" class="btn btn-outline-secondary margin_right" (click)="onCancel()">Cancel</button>
+        </div>        
+    </form>
+</div>

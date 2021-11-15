@@ -1,31 +1,11 @@
 table {
     width: 100%;
-}
-
-th.mat-sort-header-sorted {
+  }
+  
+  th.mat-sort-header-sorted {
     color: black;
-}
+  }
 
-.mat-row:hover .mat-cell {
+  .mat-row:hover .mat-cell {
     background-color: silver;
-}
-
-// ----------------------------------------------------------------------------
-
-div.form-element{
-    max-width: 350px; 
-    margin: auto;
-}
-
-.example-right-align {
-    text-align: right;
-    }
-    
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-display: none;
-}
-
-input.example-right-align {
--moz-appearance: textfield;
-}
+  }
