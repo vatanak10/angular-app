@@ -10,7 +10,7 @@ import { ItemService } from "../services/item.service";
 })
 
 export class ItemListComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'category', 'price'];
+    displayedColumns: string[] = ['id', 'name', 'category', 'price', 'config'];
     items: any = [];  
     @Input() itemList: any;
 
