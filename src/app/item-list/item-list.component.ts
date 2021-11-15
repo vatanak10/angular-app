@@ -15,11 +15,10 @@ export class ItemListComponent implements OnInit {
     @Input() itemList: any;
 
     constructor(private itemService: ItemService, private router: Router) {
-      this.items = this.itemService.getAllItems();
     }
 
     ngOnInit(): void {
-
+        this.items = this.itemService.getAllItems();
     }
 
     onClickAddNew(): void {
