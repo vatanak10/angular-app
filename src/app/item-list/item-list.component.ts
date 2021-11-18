@@ -10,16 +10,15 @@ import { ItemService } from "../services/item.service";
 })
 
 export class ItemListComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'category', 'price'];
+    displayedColumns: string[] = ['id', 'name', 'category', 'price', 'config'];
     items: any = [];  
     @Input() itemList: any;
 
     constructor(private itemService: ItemService, private router: Router) {
-      this.items = this.itemService.getAllItems();
     }
 
     ngOnInit(): void {
-
+        this.items = this.itemService.getAllItems();
     }
 
     onClickAddNew(): void {
