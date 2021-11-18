@@ -10,17 +10,14 @@ import { ItemService } from "../services/item.service";
 })
 
 export class DashboardComponent implements OnInit{
-    categories: any[] = [];
     list_order: any[] = [];
   
-    constructor(private itemService: ItemService, private router: Router, private categoryService: CategoryService) {
+    constructor(private itemService: ItemService, private router: Router) {
         
     }
 
     ngOnInit(): void {
         this.list_order = this.itemService.getOrderItem();
-        this.categories = this.categoryService.getAllCategories();
-        console.log(this.categories);
     }
     
 }
