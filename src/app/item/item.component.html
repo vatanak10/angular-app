@@ -1,8 +1,8 @@
 <div class="w-100 d-flex justify-content-center">
   <div class="shadow my-3">
       <mat-button-toggle-group  name="categoryList" aria-label="Category List">
-          <mat-button-toggle *ngFor="let category of categories" (click)="filterCategory(category.value)">
-              {{category.title}}
+          <mat-button-toggle *ngFor="let category of categories" (click)="filterCategory(category.id)">
+              {{category.name}}
           </mat-button-toggle>
       </mat-button-toggle-group>
   </div>
@@ -14,7 +14,7 @@
       <div class="card-body">
           <div class="d-flex justify-content-between">
             <p class="card-text">{{item.name}}</p>
-            <p class="card-text">{{item.price}}</p>
+            <p class="card-text">$ {{item.price}}</p>
           </div>
       </div>
   </div>

@@ -11,7 +11,7 @@ import { ItemService } from "../services/item.service";
 
 export class ItemListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'name', 'category', 'price', 'config'];
-    items: any = [];  
+    items: any;
     @Input() itemList: any;
 
     constructor(private itemService: ItemService, private router: Router) {
@@ -19,6 +19,7 @@ export class ItemListComponent implements OnInit {
 
     ngOnInit(): void {
         this.items = this.itemService.getAllItems();
+        console.log(this.items);
     }
 
     onClickAddNew(): void {

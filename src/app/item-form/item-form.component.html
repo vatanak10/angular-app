@@ -12,10 +12,7 @@
             <mat-form-field appearance="fill" class="w-100">
                 <mat-label for="categoryFormControl">Category</mat-label>
                 <mat-select required formControlName="category" id="categoryFormControl">
-                    <mat-option>-- None --</mat-option>
-                    <mat-option value="Vehicle">Vehicle</mat-option>
-                    <mat-option value="Property">Property</mat-option>
-                    <mat-option value="Food">Food</mat-option>
+                    <mat-option *ngFor="let i of categories" [value]="i.id" >{{i.name}}</mat-option>
                 </mat-select>                  
             </mat-form-field>
         </div>
