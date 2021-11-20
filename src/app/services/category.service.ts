@@ -5,15 +5,11 @@ import { ItemService } from "./item.service";
 
 @Injectable()
 export class CategoryService {
-    current_category: any = "all";
     category: any[] = [];
 
     constructor(private itemService: ItemService, private http: HttpClient){
         
     }
-
-    items: any = []
-    filteredItems: any = [];
 
     refreshItemList = new EventEmitter();
 
@@ -37,29 +33,7 @@ export class CategoryService {
         return this.category;
     }
 
-    getCurrentCategory(){
-        return this.current_category;
-    }
-
-    getfilteredItems(){
-        return this.filteredItems;
-    }
-
-    changeCurrentCategory(value: any) {
-        this.current_category = value;
-    }
-
-    filterByCategory(value: any) {
-        this.items = this.itemService.getAllItems();
-        if(value !== "0"){
-            this.filteredItems = this.items.filter((i:any) => i.category === value); //filter function here
-        } else {
-            this.filteredItems = this.items;
-        }
-        this.current_category = value;
-        console.log(value);
-        console.log(this.items);
-        console.log(this.filteredItems);
-        return this.filteredItems;
+    getCategoryName(id: any){
+        // get id, return category name
     }
 }

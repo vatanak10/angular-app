@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
+import { CategoryService } from "../services/category.service";
 import { ItemService } from "../services/item.service";
 
 
@@ -12,17 +13,27 @@ import { ItemService } from "../services/item.service";
 export class ItemListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'name', 'category', 'price', 'config'];
     items: any;
-    @Input() itemList: any;
 
-    constructor(private itemService: ItemService, private router: Router) {
+    constructor(private itemService: ItemService, private router: Router, private categoryService: CategoryService) {
     }
 
     ngOnInit(): void {
-        this.items = this.itemService.getAllItems();
-        console.log(this.items);
+        this.itemService.getAllItems().subscribe((result: any) => {
+            this.items = result.data;
+        });
     }
 
     onClickAddNew(): void {
         this.router.navigate(['/item-list/create']);
+    }
+
+    onEdit(id: any){
+        // this.ItemService.editItem(id);
+        console.log(id);
+    }
+
+    onDelete(id: any) {
+        // this.itemService.deleteItem(id);
+        console.log(id);
     }
 }

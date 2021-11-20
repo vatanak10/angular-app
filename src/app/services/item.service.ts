@@ -36,23 +36,27 @@ export class ItemService {
 
     getAllItems() {
         this.items = [];
-        this.http
-        .get(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
-        )
-        .toPromise()
-        .then((result: any) => {
-            result.data.forEach((r: any) => {
-                this.items.push({
-                    id: r.id,
-                    img: r.pic,
-                    name: r.title,
-                    category: r.category_id,
-                    price: r.price 
-                });
-            });
-        });
-        return this.items;
+        return this.http.get(
+        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
+        );
+        // this.items = [];
+        // this.http
+        // .get(
+        //     'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
+        // )
+        // .toPromise()
+        // .then((result: any) => {
+        //     result.data.forEach((r: any) => {
+        //         this.items.push({
+        //             id: r.id,
+        //             img: r.pic,
+        //             name: r.title,
+        //             category: r.category_id,
+        //             price: r.price 
+        //         });
+        //     });
+        // });
+        // return this.items;
     }
 
     getOrderItem() {
