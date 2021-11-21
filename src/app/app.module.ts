@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { ItemService } from './services/item.service';
 import { CategoryService } from './services/category.service';
+import { AuthService } from './services/auth.service';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,19 +28,24 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   {
-    path: 'shop', 
+    path: '',
     component: DashboardComponent
   },
   {
-    path: 'item-list', 
+    path: 'items',
     component: ItemListComponent
   },
   {
-    path: 'item-list/create', 
+    path: 'items/create',
     component: ItemFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ]
 
@@ -51,7 +58,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ItemFormComponent,
     ItemListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +78,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [
-    
+
   ],
-  providers: [ItemService, CategoryService],
+  providers: [ItemService, CategoryService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

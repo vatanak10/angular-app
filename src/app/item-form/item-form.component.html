@@ -13,7 +13,7 @@
                 <mat-label for="categoryFormControl">Category</mat-label>
                 <mat-select required formControlName="category" id="categoryFormControl">
                     <mat-option *ngFor="let i of categories" [value]="i.id" >{{i.name}}</mat-option>
-                </mat-select>                  
+                </mat-select>
             </mat-form-field>
         </div>
 
@@ -37,6 +37,6 @@
         <div class="form-element">
             <button type="submit" class="btn btn-outline-success me-2">Add Product</button>
             <button type="button" class="btn btn-outline-secondary margin_right" (click)="onCancel()">Cancel</button>
-        </div>        
+        </div>
     </form>
 </div>

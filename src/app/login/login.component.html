@@ -1,0 +1,26 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="form-element">
+          <mat-form-field appearance="fill" class="w-100">
+              <mat-label for="nameFormControl">Username</mat-label>
+              <input matInput required formControlName="username">
+              <mat-icon matSuffix color="primary">username</mat-icon>
+          </mat-form-field>
+      </div>
+
+      <div class="form-element">
+          <mat-form-field appearance="fill" class="w-100">
+              <mat-label for="imageFormControl">Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" id="hide-password-btn">
+                <mat-icon color="primary" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+          </mat-form-field>
+      </div>
+
+      <div class="form-element">
+          <button type="submit" class="btn btn-outline-success me-2">Login</button>
+          <button type="button" class="btn btn-outline-secondary margin_right" (click)="onCancel()">Register</button>
+      </div>
+  </form>
+</div>

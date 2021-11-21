@@ -1,23 +1,34 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
         <div class="container container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
+          <a class="navbar-brand" href="/">Shop</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a  class="nav-link active" aria-current="page" [routerLinkActiveOptions]="{ exact: true }"
-                    routerLink="/shop"
+                    routerLink="/"
                     routerLinkActive="active">
                   Shop
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" routerLink="/item-list" routerLinkActive="active">Item List</a>
-              </li>             
+                <a class="nav-link" routerLink="/items" routerLinkActive="active">Items</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item" *ngIf="!authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+              </li>
+              <li class="nav-item" *ngIf="authService.isAuthenticated()" (click)="onLogout()">
+                <a class="nav-link" routerLink="" routerLinkActive="active">Logout</a>
+              </li>
+              <li class="nav-item" *ngIf="authService.isAuthenticated()">
+                <a class="nav-link" routerLink="" routerLinkActive="active">{{username}}</a>
+              </li>
             </ul>
           </div>
         </div>

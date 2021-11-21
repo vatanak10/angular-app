@@ -24,7 +24,7 @@ export class ItemListComponent implements OnInit {
     }
 
     onClickAddNew(): void {
-        this.router.navigate(['/item-list/create']);
+        this.router.navigate(['/items/create']);
     }
 
     onEdit(id: any){
