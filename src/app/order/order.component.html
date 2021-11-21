@@ -2,14 +2,14 @@
     <div class="card mt-2 p-1 w-100">
         <div class="row g-0">
           <div class="col-lg-4 d-flex align-items-center">
-            <img [src]="l.img" class="img-fluid rounded" [alt]="l.name">
+            <img [src]="l.pic" class="img-fluid rounded" [alt]="l.title">
           </div>
           <div class="col-lg-8">
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-around">
                 <div>
-                  <p class="card-title pe-3 mb-0">{{l.name}}</p>                  
-                  <p class="card-text"><small class="text-muted">{{l.price}}</small></p>
+                  <p class="card-title pe-3 mb-0">{{l.title}}</p>                  
+                  <p class="card-text"><small class="text-muted">Total: $ {{l.price*l.qty}}</small></p>
                 </div>  
                 
                 <div class="d-flex justify-content-lg-center flex-sm-column">

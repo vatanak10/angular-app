@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import { Router } from "@angular/router";
 import { CategoryService } from "../services/category.service";
 import { ItemService } from "../services/item.service";
 
@@ -10,18 +11,25 @@ import { ItemService } from "../services/item.service";
 
 export class ItemComponent implements OnInit{
     categories: any[] = [];
-    @Input() items: any = [];  
+    items: any = [];
+    itemFilter: any[] = [];
 
-    constructor(private itemService: ItemService, private categoryService: CategoryService) {
-      this.items = this.categoryService.getfilteredItems();
-      this.categoryService.refreshItemList.subscribe((s) => {
-          this.items = this.categoryService.getfilteredItems();
-      });
+    constructor(private itemService: ItemService, private categoryService: CategoryService, private router: Router) {
+
     }
   
     ngOnInit(): void {
-      this.items = this.itemService.getAllItems();
+      this.itemService.getAllItems().subscribe((result: any) => {
+        this.items = result.data;
+        this.itemFilter = this.items;
+      });
       this.categories = this.categoryService.getAllCategories();
+      this.categories.push({
+          id: "0",
+          name: "All",
+          des: "all",
+          created_date: "2021-11-15T16:07:07.401Z"
+      });
     }
 
     onClickItem(item: any): void {
@@ -29,10 +37,10 @@ export class ItemComponent implements OnInit{
     }
 
     filterCategory(value: any){
-      this.categoryService.filterByCategory(value);
-      // console.log(value);
-      // console.log(this.items);
-      // console.log(this.categoryService.getfilteredItems());
-      this.items = this.categoryService.getfilteredItems();
+      if (value === '0') {
+        this.itemFilter = this.items;
+      } else {
+        this.itemFilter = this.items.filter((i:any) => i.category_id === value);
+      }
     }
 }

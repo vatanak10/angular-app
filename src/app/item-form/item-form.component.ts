@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ItemService } from "../services/item.service";
+import { CategoryService } from "../services/category.service";
 
 @Component({
     selector: 'app-item-form',
@@ -10,15 +11,18 @@ import { ItemService } from "../services/item.service";
 })
 
 export class ItemFormComponent {
+    categories: any = [];
     form: FormGroup;
     
-    constructor(private router: Router, private fb: FormBuilder, private itemService: ItemService) {
+    constructor(private router: Router, private fb: FormBuilder, private itemService: ItemService, private categoryService: CategoryService) {
         this.form = fb.group({
             name: new FormControl(null),
             category: new FormControl(null),
             price: new FormControl(null),
             image: new FormControl(null)
           });
+        this.categories = categoryService.getAllCategories();
+        console.log(this.categories);
     }
 
     onCancel(): void {
@@ -28,12 +32,12 @@ export class ItemFormComponent {
     onSubmit(): void {
         console.log(this.form.value);
         this.itemService.addItem({
-            name: this.form.value.name,
-            category: this.form.value.category,
+            title: this.form.value.name,
+            category_id: this.form.value.category,
             price: this.form.value.price,
-            img: this.form.value.image
+            pic: this.form.value.image
         });
-        this.router.navigate(['/item-list']);
+        this.router.navigate(['/shop']);
     }
     
 }

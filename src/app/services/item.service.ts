@@ -1,4 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ItemService {
@@ -30,8 +32,31 @@ export class ItemService {
 
     refreshListOrder = new EventEmitter();
 
+    constructor(private http: HttpClient, private router: Router) {}
+
     getAllItems() {
-        return this.items;
+        this.items = [];
+        return this.http.get(
+        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
+        );
+        // this.items = [];
+        // this.http
+        // .get(
+        //     'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
+        // )
+        // .toPromise()
+        // .then((result: any) => {
+        //     result.data.forEach((r: any) => {
+        //         this.items.push({
+        //             id: r.id,
+        //             img: r.pic,
+        //             name: r.title,
+        //             category: r.category_id,
+        //             price: r.price 
+        //         });
+        //     });
+        // });
+        // return this.items;
     }
 
     getOrderItem() {
@@ -70,7 +95,29 @@ export class ItemService {
     }
 
     addItem(item: any) {
-        this.items.push(({ ...item, id: this.items.length + 1 }));
-        console.log(this.items);
+        // this.items.push(({ ...item, id: this.items.length + 1 }));
+        // console.log(this.items);
+        this.http
+        .post(
+            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item',
+            item
+        )
+        .toPromise()
+        .then((result: any) => {
+            console.log(result);
+            this.router.navigate(['/item-list']);
+        });
     }
+
+    deleteItem(id: any) {
+        this.http
+          .post(
+            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item/delete',
+            {id: id}
+          )
+          .toPromise()
+          .then((result: any) => {
+            console.log(result);
+          });
+      }
 }

@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Angular CLI Commands
+
+ng g c - generate a new component
+ng g s - generate a new service
+ng g d - generate a new directive
+ng g m - generate a new module
+ng g p - generate a new pipe
