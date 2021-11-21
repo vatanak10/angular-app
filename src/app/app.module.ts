@@ -25,6 +25,7 @@ import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     OrderComponent,
     DashboardComponent,
     ItemFormComponent,
-    ItemListComponent
+    ItemListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
