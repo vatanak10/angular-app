@@ -17,31 +17,24 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ItemComponent } from './item/item.component';
-import { OrderComponent } from './order/order.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ItemFormComponent } from './item-form/item-form.component';
-import { ItemListComponent } from './item-list/item-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+
+import { ShopModule } from './shop/shop.module';
+import { ItemPageModule } from './item-page/item-page.module';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    loadChildren: () => import("./shop/shop.module").then((m) => m.ShopModule)
   },
   {
     path: 'items',
-    component: ItemListComponent
-  },
-  {
-    path: 'items/create',
-    component: ItemFormComponent
+    loadChildren: () => import("./item-page/item-page.module").then((m) => m.ItemPageModule)
   },
   {
     path: 'login',
@@ -53,11 +46,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    ItemComponent,
-    OrderComponent,
-    DashboardComponent,
-    ItemFormComponent,
-    ItemListComponent,
     NotFoundComponent,
     LoginComponent
   ],
@@ -71,7 +59,6 @@ const appRoutes: Routes = [
     MatIconModule,
     MatSelectModule,
     MatDialogModule,
-    MatButtonToggleModule,
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,

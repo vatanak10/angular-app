@@ -1,6 +1,8 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CookieService } from "ngx-cookie-service";
+import { HeaderService } from "./header.service";
 
 @Injectable()
 export class ItemService {
@@ -29,15 +31,17 @@ export class ItemService {
     ];
 
     list_order: any[] = [];
-
+    httpOption: any;
     refreshListOrder = new EventEmitter();
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {
+      this.httpOption = new HeaderService(this.cookieService).httpOptionsAuth;
+    }
 
     getAllItems() {
         this.items = [];
         return this.http.get(
-        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item'
+        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item', this.httpOption
         );
         // this.items = [];
         // this.http
@@ -52,7 +56,7 @@ export class ItemService {
         //             img: r.pic,
         //             name: r.title,
         //             category: r.category_id,
-        //             price: r.price 
+        //             price: r.price
         //         });
         //     });
         // });
@@ -99,7 +103,7 @@ export class ItemService {
         // console.log(this.items);
         this.http
         .post(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item',
+            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item',
             item
         )
         .toPromise()
@@ -112,7 +116,7 @@ export class ItemService {
     deleteItem(id: any) {
         this.http
           .post(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8081/item/delete',
+            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item/delete',
             {id: id}
           )
           .toPromise()

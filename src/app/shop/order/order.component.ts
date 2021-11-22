@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ItemService } from "../services/item.service";
+import { ItemService } from "../../services/item.service";
 
 @Component({
     selector: 'app-order',
@@ -30,6 +30,6 @@ export class OrderComponent implements OnInit{
     }
 
     OnDelete(list_order: any): void {
-        this.itemService.deleteOrderItem(list_order);        
+        this.itemService.deleteOrderItem(list_order);
     }
 }
