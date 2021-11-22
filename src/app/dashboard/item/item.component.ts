@@ -10,7 +10,14 @@ import { ItemService } from "../../services/item.service";
 })
 
 export class ItemComponent implements OnInit{
-    categories: any[] = [];
+    categories: any[] = [
+      {
+        id: "0",
+        name: "All",
+        des: "all",
+        created_date: "2021-11-15T16:07:07.401Z"
+      }
+    ];
     items: any = [];
     itemFilter: any[] = [];
 
@@ -24,12 +31,8 @@ export class ItemComponent implements OnInit{
         this.itemFilter = this.items;
       });
       this.categoryService.getAllCategories().subscribe((result: any) => {
-        this.categories = result;
-        this.categories.push({
-            id: "0",
-            name: "All",
-            des: "all",
-            created_date: "2021-11-15T16:07:07.401Z"
+        result.forEach((e: any) => {
+          this.categories.push(e);
         });
       });
     }

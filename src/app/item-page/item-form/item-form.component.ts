@@ -36,9 +36,11 @@ export class ItemFormComponent {
             title: this.form.value.name,
             category_id: this.form.value.category,
             price: this.form.value.price,
-            pic: this.form.value.image
+            pic: this.form.value.image,
+            is_stock: null,
+            stock: null
         });
-        this.router.navigate(['/items-list']);
+        this.router.navigate(['/items']);
     }
 
 }

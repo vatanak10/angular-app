@@ -33,7 +33,7 @@ export class ItemListComponent implements OnInit {
     }
 
     onDelete(id: any) {
-        // this.itemService.deleteItem(id);
+        this.itemService.deleteItem(id);
         console.log(id);
     }
 }

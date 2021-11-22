@@ -103,14 +103,14 @@ export class ItemService {
         // console.log(this.items);
         this.http
         .post(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item',
+            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item', this.httpOption,
             item
-        )
-        .toPromise()
-        .then((result: any) => {
-            console.log(result);
-            this.router.navigate(['/item-list']);
-        });
+        );
+        // .toPromise()
+        // .then((result: any) => {
+        //     console.log(result);
+        //     this.router.navigate(['/items']);
+        // });
     }
 
     deleteItem(id: any) {

@@ -24,13 +24,13 @@ import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 
-import { ShopModule } from './shop/shop.module';
+import { ShopModule } from './dashboard/shop.module';
 import { ItemPageModule } from './item-page/item-page.module';
 
 const appRoutes: Routes = [
   {
     path: '',
-    loadChildren: () => import("./shop/shop.module").then((m) => m.ShopModule)
+    loadChildren: () => import("./dashboard/shop.module").then((m) => m.ShopModule)
   },
   {
     path: 'items',
