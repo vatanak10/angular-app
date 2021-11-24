@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 const routes = [
   {
@@ -33,6 +35,7 @@ const routes = [
     MatOptionModule,
     MatSelectModule,
     MatTableModule,
+    MatSlideToggleModule,
     RouterModule.forChild(routes)
   ],
   exports: [

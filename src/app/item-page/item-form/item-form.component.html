@@ -27,11 +27,20 @@
         </div>
 
         <div class="form-element">
-            <mat-form-field appearance="fill" class="w-100">
-                <mat-label for="imageFormControl">Image Link Address</mat-label>
-                <input matInput required formControlName="image" id="imageFormControl" placeholder="">
-                <mat-icon matSuffix color="primary">image</mat-icon>
-            </mat-form-field>
+          <mat-form-field appearance="fill" class="w-100">
+              <mat-label for="imageFormControl">Image Link Address</mat-label>
+              <input matInput required formControlName="image" id="imageFormControl" placeholder="">
+              <mat-icon matSuffix color="primary">image</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-element">
+          <mat-slide-toggle color="primary" (change)="onToggle()">In Stock?</mat-slide-toggle>
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label for="stockFormControl">Stock Quantity</mat-label>
+            <input matInput required type="number" formControlName="stock" id="stockFormControl">
+            <!-- <mat-icon matSuffix color="primary">profile</mat-icon> -->
+          </mat-form-field>
         </div>
 
         <div class="form-element">

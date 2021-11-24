@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ItemService } from "../../services/item.service";
@@ -10,7 +10,7 @@ import { CategoryService } from "../../services/category.service";
     styleUrls: ['./item-form.component.scss']
 })
 
-export class ItemFormComponent {
+export class ItemFormComponent implements OnInit{
     categories: any = [];
     form: FormGroup;
 
@@ -19,15 +19,27 @@ export class ItemFormComponent {
             name: new FormControl(null),
             category: new FormControl(null),
             price: new FormControl(null),
-            image: new FormControl(null)
+            image: new FormControl(null),
+            is_stock: new FormControl(null),
+            stock: new FormControl({value: null, disabled: true})
           });
         this.categoryService.getAllCategories().subscribe((result: any) => {
           this.categories = result;
         });
     }
+    ngOnInit(): void {
+    }
+
+    onToggle(): void {
+      if (this.form.controls['stock'].disabled) {
+        this.form.controls['stock'].enable();
+      } else {
+        this.form.controls['stock'].disable();
+      }
+    }
 
     onCancel(): void {
-        this.router.navigate(['/item-list']);
+        this.router.navigate(['/items']);
       }
 
     onSubmit(): void {
@@ -37,8 +49,8 @@ export class ItemFormComponent {
             category_id: this.form.value.category,
             price: this.form.value.price,
             pic: this.form.value.image,
-            is_stock: null,
-            stock: null
+            is_stock: this.form.controls['stock'].disabled,
+            stock: this.form.value.stock
         });
         this.router.navigate(['/items']);
     }
