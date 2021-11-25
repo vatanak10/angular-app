@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
 import { HeaderService } from "./header.service";
+import { API_URL } from "../config";
 
 @Injectable()
 export class ItemService {
@@ -103,7 +104,9 @@ export class ItemService {
         // console.log(this.items);
         this.http
         .post(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item', this.httpOption,
+            // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item',
+            `${API_URL}/item`,
+            this.httpOption,
             item
         );
         // .toPromise()
@@ -116,7 +119,8 @@ export class ItemService {
     deleteItem(id: any) {
         this.http
           .post(
-            'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item/delete',
+            // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item/delete',
+            `${API_URL}/item/delete`,
             {id: id}
           )
           .toPromise()

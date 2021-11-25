@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { API_URL } from '../config';
 
 @Injectable()
 export class AuthService {
@@ -30,7 +31,8 @@ export class AuthService {
 
     this.http
       .post(
-        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/oauth/token',
+        // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/oauth/token',
+        `${API_URL}/oauth/token`,
         body.toString(),
         httpOptions
       )
