@@ -8,10 +8,12 @@ import { ItemService } from "../services/item.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { ItemComponent } from "./item/item.component";
 import { OrderComponent } from "./order/order.component";
+import { AuthGuardService } from "../services/auth-guard.service";
 
 const routes = [
   {
     path: '',
+    canActivate: [AuthGuardService],
     component: DashboardComponent
   },
 ]

@@ -11,15 +11,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 const routes = [
   {
     path: '',
+    canActivate: [AuthGuardService],
     component: ItemListComponent
   },
   {
     path: 'create',
+    canActivate: [AuthGuardService],
     component: ItemFormComponent
   },
 ];

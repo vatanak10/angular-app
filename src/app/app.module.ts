@@ -26,6 +26,9 @@ import { LoginComponent } from './login/login.component';
 
 import { ShopModule } from './dashboard/shop.module';
 import { ItemPageModule } from './item-page/item-page.module';
+import { HeaderService } from './services/header.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   {
@@ -62,12 +65,14 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [
 
   ],
-  providers: [ItemService, CategoryService, AuthService],
+  providers: [ItemService, CategoryService, AuthService, HeaderService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
