@@ -11,6 +11,7 @@ import { CategoryService } from "../../services/category.service";
 })
 
 export class ItemFormComponent implements OnInit{
+    hide = false;
     categories: any = [];
     form: FormGroup;
 
@@ -21,7 +22,8 @@ export class ItemFormComponent implements OnInit{
             price: new FormControl(null),
             image: new FormControl(null),
             is_stock: new FormControl(null),
-            stock: new FormControl({value: null, disabled: true})
+            stock: new FormControl({value: null, disabled: true}),
+            supplier: new FormControl({value: null, disabled: true})
           });
         this.categoryService.getAllCategories().subscribe((result: any) => {
           this.categories = result;
@@ -32,9 +34,13 @@ export class ItemFormComponent implements OnInit{
 
     onToggle(): void {
       if (this.form.controls['stock'].disabled) {
+        this.hide = !this.hide;
         this.form.controls['stock'].enable();
+        this.form.controls['supplier'].enable();
       } else {
+        this.hide = !this.hide;
         this.form.controls['stock'].disable();
+        this.form.controls['supplier'].disable();
       }
     }
 
@@ -43,14 +49,23 @@ export class ItemFormComponent implements OnInit{
       }
 
     onSubmit(): void {
-        console.log(this.form.value);
+        console.log({
+          title: this.form.value.name,
+          category_id: this.form.value.category,
+          price: this.form.value.price,
+          pic: this.form.value.image,
+          is_stock: this.hide,
+          stock: this.form.value.stock,
+          supplier_id: this.form.value.supplier
+      });
         this.itemService.addItem({
             title: this.form.value.name,
             category_id: this.form.value.category,
             price: this.form.value.price,
             pic: this.form.value.image,
-            is_stock: this.form.controls['stock'].disabled,
-            stock: this.form.value.stock
+            is_stock: this.hide,
+            stock: this.form.value.stock,
+            supplier_id: this.form.value.supplier
         });
         this.router.navigate(['/items']);
     }
