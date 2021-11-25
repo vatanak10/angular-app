@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ItemService } from "../../services/item.service";
 import { CategoryService } from "../../services/category.service";
+import { SupplierService } from "src/app/services/supplier.service";
 
 @Component({
     selector: 'app-item-form',
@@ -13,35 +14,48 @@ import { CategoryService } from "../../services/category.service";
 export class ItemFormComponent implements OnInit{
     hide = false;
     categories: any = [];
+    suppliers: any = [];
     form: FormGroup;
 
-    constructor(private router: Router, private fb: FormBuilder, private itemService: ItemService, private categoryService: CategoryService) {
+    constructor(
+      private router: Router,
+      private fb: FormBuilder,
+      private itemService: ItemService,
+      private categoryService: CategoryService,
+      private supplierService: SupplierService
+    ) {
         this.form = fb.group({
             name: new FormControl(null),
             category: new FormControl(null),
             price: new FormControl(null),
             image: new FormControl(null),
             is_stock: new FormControl(null),
-            stock: new FormControl({value: null, disabled: true}),
-            supplier: new FormControl({value: null, disabled: true})
+            stock: new FormControl("0"),
+            supplier: new FormControl("")
+            // stock: new FormControl({value: null, disabled: true}),
+            // supplier: new FormControl({value: null, disabled: true})
           });
         this.categoryService.getAllCategories().subscribe((result: any) => {
           this.categories = result;
+        });
+        this.supplierService.getAllSupplier().subscribe((result: any) => {
+          this.suppliers = result;
         });
     }
     ngOnInit(): void {
     }
 
     onToggle(): void {
-      if (this.form.controls['stock'].disabled) {
-        this.hide = !this.hide;
-        this.form.controls['stock'].enable();
-        this.form.controls['supplier'].enable();
-      } else {
-        this.hide = !this.hide;
-        this.form.controls['stock'].disable();
-        this.form.controls['supplier'].disable();
-      }
+      this.hide = !this.hide;
+      // if (this.form.controls['stock'].disabled) {
+      //   this.hide = !this.hide;
+      //   this.form.controls['stock'].enable();
+      //   this.form.controls['supplier'].enable();
+      // } else {
+      //   this.hide = !this.hide;
+      //   this.form.controls['stock'].disable();
+      //   this.form.controls['supplier'].disable();
+      // }
     }
 
     onCancel(): void {

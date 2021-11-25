@@ -42,7 +42,9 @@ export class ItemService {
     getAllItems() {
         this.items = [];
         return this.http.get(
-        'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item', this.httpOption
+        // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item',
+        `${API_URL}/item`,
+        this.httpOption
         );
         // this.items = [];
         // this.http
@@ -112,7 +114,7 @@ export class ItemService {
         // .toPromise()
         // .then((result: any) => {
         //     console.log(result);
-        //     this.router.navigate(['/items']);
+        // //     this.router.navigate(['/items']);
         // });
     }
 
@@ -120,12 +122,13 @@ export class ItemService {
         this.http
           .post(
             // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item/delete',
-            `${API_URL}/item/delete`,
-            {id: id}
-          )
-          .toPromise()
-          .then((result: any) => {
-            console.log(result);
-          });
+            `${API_URL}/item/delete?id=${id}`,
+            {id},
+            this.httpOption
+          );
+          // .toPromise()
+          // .then((result: any) => {
+          //   console.log(result);
+          // });
       }
 }
