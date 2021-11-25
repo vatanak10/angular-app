@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
-import { CategoryService } from "../services/category.service";
-import { ItemService } from "../services/item.service";
+import { CategoryService } from "../../services/category.service";
+import { ItemService } from "../../services/item.service";
 
 @Component({
     selector: 'app-item',
@@ -10,25 +10,30 @@ import { ItemService } from "../services/item.service";
 })
 
 export class ItemComponent implements OnInit{
-    categories: any[] = [];
+    categories: any[] = [
+      {
+        id: "0",
+        name: "All",
+        des: "all",
+        created_date: "2021-11-15T16:07:07.401Z"
+      }
+    ];
     items: any = [];
     itemFilter: any[] = [];
 
     constructor(private itemService: ItemService, private categoryService: CategoryService, private router: Router) {
 
     }
-  
+
     ngOnInit(): void {
       this.itemService.getAllItems().subscribe((result: any) => {
-        this.items = result.data;
+        this.items = result;
         this.itemFilter = this.items;
       });
-      this.categories = this.categoryService.getAllCategories();
-      this.categories.push({
-          id: "0",
-          name: "All",
-          des: "all",
-          created_date: "2021-11-15T16:07:07.401Z"
+      this.categoryService.getAllCategories().subscribe((result: any) => {
+        result.forEach((e: any) => {
+          this.categories.push(e);
+        });
       });
     }
 

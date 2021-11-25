@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { ItemService } from './services/item.service';
 import { CategoryService } from './services/category.service';
+import { AuthService } from './services/auth.service';
+
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,30 +17,31 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ItemComponent } from './item/item.component';
-import { OrderComponent } from './order/order.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ItemFormComponent } from './item-form/item-form.component';
-import { ItemListComponent } from './item-list/item-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
+
+import { ShopModule } from './dashboard/shop.module';
+import { ItemPageModule } from './item-page/item-page.module';
+import { HeaderService } from './services/header.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   {
-    path: 'shop', 
-    component: DashboardComponent
+    path: '',
+    loadChildren: () => import("./dashboard/shop.module").then((m) => m.ShopModule)
   },
   {
-    path: 'item-list', 
-    component: ItemListComponent
+    path: 'items',
+    loadChildren: () => import("./item-page/item-page.module").then((m) => m.ItemPageModule)
   },
   {
-    path: 'item-list/create', 
-    component: ItemFormComponent
+    path: 'login',
+    component: LoginComponent
   }
 ]
 
@@ -46,12 +49,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    ItemComponent,
-    OrderComponent,
-    DashboardComponent,
-    ItemFormComponent,
-    ItemListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,16 +62,17 @@ const appRoutes: Routes = [
     MatIconModule,
     MatSelectModule,
     MatDialogModule,
-    MatButtonToggleModule,
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [
-    
+
   ],
-  providers: [ItemService, CategoryService],
+  providers: [ItemService, CategoryService, AuthService, HeaderService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
