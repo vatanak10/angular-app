@@ -44,7 +44,7 @@ export class ItemFormComponent implements OnInit{
       this.categoryService.getAllCategories().subscribe((result: any) => {
         this.categories = result;
       });
-      this.supplierService.getAllSupplier().subscribe((result: any) => {
+      this.supplierService.getAllSuppliers().subscribe((result: any) => {
         this.suppliers = result;
       });
 

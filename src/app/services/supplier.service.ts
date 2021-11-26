@@ -14,7 +14,7 @@ export class SupplierService {
     this.httpOption = new HeaderService(cookieService).httpOptionsAuth;
   }
 
-  getAllSupplier() {
+  getAllSuppliers() {
     return this.http.get(
       `${API_URL}/supplier`,
       this.httpOption

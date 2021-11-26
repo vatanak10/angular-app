@@ -4,6 +4,7 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { SupplierFormComponent } from './supplier-form/supplier-form.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
+import { MatTableModule } from '@angular/material/table';
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
   declarations: [SupplierListComponent, SupplierFormComponent],
   imports: [
     CommonModule,
+    MatTableModule,
     RouterModule.forChild(routes)
   ],
   exports: [SupplierListComponent, SupplierFormComponent]
