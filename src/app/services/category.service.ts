@@ -26,7 +26,12 @@ export class CategoryService {
         // get id, return category name
     }
 
-    deleteCategory(id: any) {
-
+    addCategory(item: any) {
+      return this.http
+        .post(
+            `${API_URL}/category`,
+            item,
+            this.httpOption
+        );
     }
 }

@@ -20,16 +20,14 @@ export class CategoryListComponent implements OnInit {
   }
 
   onClickAddNew(): void {
-    this.router.navigate(['/items/create']);
+    this.router.navigate(['/categories/create']);
   }
 
   onEdit(id: any){
-    // this.ItemService.editItem(id);
-      console.log(id);
+    console.log(id);
   }
 
   onDelete(id: any) {
-      this.categoryService.deleteCategory(id);
       console.log(id);
   }
 
