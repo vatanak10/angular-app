@@ -102,33 +102,31 @@ export class ItemService {
     }
 
     addItem(item: any) {
-        // this.items.push(({ ...item, id: this.items.length + 1 }));
-        // console.log(this.items);
-        this.http
+      return this.http
         .post(
             // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item',
             `${API_URL}/item`,
-            this.httpOption,
-            item
+            item,
+            this.httpOption
         );
-        // .toPromise()
-        // .then((result: any) => {
-        //     console.log(result);
-        // //     this.router.navigate(['/items']);
-        // });
+    }
+
+    editItem(item: any) {
+      return this.http
+        .post(
+          `${API_URL}/item/edit`,
+          item,
+          this.httpOption
+        );
     }
 
     deleteItem(id: any) {
-        this.http
+        return this.http
           .post(
             // 'http://ec2-18-141-58-241.ap-southeast-1.compute.amazonaws.com:8082/item/delete',
             `${API_URL}/item/delete?id=${id}`,
             {id},
             this.httpOption
           );
-          // .toPromise()
-          // .then((result: any) => {
-          //   console.log(result);
-          // });
       }
 }

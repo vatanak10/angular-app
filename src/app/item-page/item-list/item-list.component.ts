@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { CategoryService } from "../../services/category.service";
 import { ItemService } from "../../services/item.service";
 
@@ -11,16 +12,23 @@ import { ItemService } from "../../services/item.service";
 })
 
 export class ItemListComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'name', 'category', 'price', 'config'];
+    displayedColumns: string[] = ['id', 'name', 'category', 'stock', 'price', 'config'];
     items: any;
+    loading = false;
 
-    constructor(private itemService: ItemService, private router: Router, private categoryService: CategoryService) {
+    constructor(private itemService: ItemService, private router: Router, private categoryService: CategoryService, private toastr: ToastrService) {
     }
 
     ngOnInit(): void {
-        this.itemService.getAllItems().subscribe((result: any) => {
-            this.items = result;
-        });
+      this.getData();
+    }
+
+    getData() {
+      this.loading = true;
+      this.itemService.getAllItems().subscribe((result: any) => {
+        this.items = result;
+        this.loading = false;
+      });
     }
 
     onClickAddNew(): void {
@@ -29,11 +37,17 @@ export class ItemListComponent implements OnInit {
 
     onEdit(id: any){
         // this.ItemService.editItem(id);
+        this.router.navigate([`/items/edit/${id}`]);
         console.log(id);
     }
 
     onDelete(id: any) {
-        this.itemService.deleteItem(id);
+      if (confirm("Are you sure about that?")) {
+        this.itemService.deleteItem(id).subscribe((res: any) => {
+          this.getData();
+        });
         console.log(id);
+        this.toastr.success("Product Deleted!", "Success!"); //Left: Des, Right: Title
+      }
     }
 }

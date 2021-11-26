@@ -25,6 +25,11 @@ const routes = [
     canActivate: [AuthGuardService],
     component: ItemFormComponent
   },
+  {
+    path: 'edit/:id',
+    canActivate: [AuthGuardService],
+    component: ItemFormComponent
+  }
 ];
 
 @NgModule({

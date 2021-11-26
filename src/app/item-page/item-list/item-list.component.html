@@ -4,7 +4,7 @@
 
         <!-- Id Column -->
         <ng-container matColumnDef="id">
-            <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+            <th class="w-15" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
             No.
             </th>
             <td mat-cell *matCellDef="let element"> {{items.indexOf(element) + 1}} </td>
@@ -20,15 +20,23 @@
 
         <!-- Category Column -->
         <ng-container matColumnDef="category">
-            <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+            <th class="w-15" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
             Category
             </th>
             <td mat-cell *matCellDef="let element"> {{element.category_name}} </td>
         </ng-container>
 
+        <!-- Stock Column -->
+        <ng-container matColumnDef="stock">
+            <th class="w-15" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by stock">
+            In Stock
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+        </ng-container>
+
         <!-- Price Column -->
         <ng-container matColumnDef="price">
-            <th class="w-20" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by price">
+            <th class="w-15" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by price">
             Price
             </th>
             <td mat-cell *matCellDef="let element">$ {{element.price}} </td>
