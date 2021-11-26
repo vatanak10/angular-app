@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 
 import { ShopModule } from './dashboard/shop.module';
 import { ItemPageModule } from './item-page/item-page.module';
+import { CategoryPageModule } from './category-page/category-page.module';
 import { HeaderService } from './services/header.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ToastrModule } from 'ngx-toastr';
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
     loadChildren: () => import("./item-page/item-page.module").then((m) => m.ItemPageModule)
   },
   {
+    path: 'categories',
+    loadChildren: () => import("./category-page/category-page.module").then((m) => m.CategoryPageModule)
+  },
+  {
     path: 'login',
     component: LoginComponent
   }
@@ -50,7 +55,7 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

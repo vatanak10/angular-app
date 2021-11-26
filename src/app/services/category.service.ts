@@ -25,4 +25,8 @@ export class CategoryService {
     getCategoryName(id: any){
         // get id, return category name
     }
+
+    deleteCategory(id: any) {
+
+    }
 }
