@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { ShopModule } from './dashboard/shop.module';
 import { ItemPageModule } from './item-page/item-page.module';
 import { CategoryPageModule } from './category-page/category-page.module';
+import { SupplierPageModule } from './supplier-page/supplier-page.module';
 import { HeaderService } from './services/header.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ToastrModule } from 'ngx-toastr';
@@ -43,6 +44,10 @@ const appRoutes: Routes = [
   {
     path: 'categories',
     loadChildren: () => import("./category-page/category-page.module").then((m) => m.CategoryPageModule)
+  },
+  {
+    path: 'suppliers',
+    loadChildren: () => import("./supplier-page/supplier-page.module").then((m) => m.SupplierPageModule)
   },
   {
     path: 'login',
