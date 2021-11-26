@@ -31,6 +31,9 @@ import { SupplierPageModule } from './supplier-page/supplier-page.module';
 import { HeaderService } from './services/header.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './register/register.component';
+import { RoleService } from './services/role.service';
+import { OrderService } from './services/order.service';
 
 const appRoutes: Routes = [
   {
@@ -52,6 +55,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ]
 
@@ -61,6 +68,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     NotFoundComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +90,7 @@ const appRoutes: Routes = [
   entryComponents: [
 
   ],
-  providers: [ItemService, CategoryService, AuthService, HeaderService, AuthGuardService],
+  providers: [ItemService, CategoryService, AuthService, HeaderService, AuthGuardService, RoleService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

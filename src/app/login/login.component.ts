@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    onCancel(): void {
-        this.router.navigate(['/items']);
-      }
+    goToRegister(): void {
+        this.router.navigate(['/register']);
+    }
 
     onSubmit(): void {
         this.authService.login({
