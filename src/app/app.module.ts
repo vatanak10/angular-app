@@ -34,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './register/register.component';
 import { RoleService } from './services/role.service';
 import { OrderService } from './services/order.service';
+import { OrderListComponent } from './order-list/order-list.component';
 
 const appRoutes: Routes = [
   {
@@ -53,6 +54,11 @@ const appRoutes: Routes = [
     loadChildren: () => import("./supplier-page/supplier-page.module").then((m) => m.SupplierPageModule)
   },
   {
+    path: 'orders',
+    canActivate: [AuthGuardService],
+    component: OrderListComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -69,6 +75,7 @@ const appRoutes: Routes = [
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    OrderListComponent,
   ],
   imports: [
     BrowserModule,
