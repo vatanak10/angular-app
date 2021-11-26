@@ -1,1 +1,32 @@
-<p>supplier-form works!</p>
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="form-element">
+          <mat-form-field appearance="fill" class="w-100">
+              <mat-label for="nameFormControl">Supplier Name</mat-label>
+              <input matInput required formControlName="name" id="nameFormControl">
+              <mat-icon matSuffix color="primary">person</mat-icon>
+          </mat-form-field>
+      </div>
+
+      <div class="form-element">
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label for="addressFormControl">Address</mat-label>
+            <input matInput required formControlName="address" id="addressFormControl" placeholder="">
+            <mat-icon matSuffix color="primary">home</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-element">
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label for="phoneFormControl">Contact Number</mat-label>
+            <input matInput required formControlName="phone" id="phoneFormControl" placeholder="">
+            <mat-icon matSuffix color="primary">phone</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-element">
+          <button type="submit" class="btn btn-outline-success me-2">{{submitText}}</button>
+          <button type="button" class="btn btn-outline-secondary margin_right" (click)="onCancel()">Cancel</button>
+      </div>
+  </form>
+</div>

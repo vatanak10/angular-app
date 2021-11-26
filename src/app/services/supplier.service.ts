@@ -20,4 +20,13 @@ export class SupplierService {
       this.httpOption
     );
   }
+
+  addSupplier(item: any) {
+    return this.http
+      .post(
+          `${API_URL}/supplier`,
+          item,
+          this.httpOption
+      );
+  }
 }
